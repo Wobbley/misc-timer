@@ -72,7 +72,6 @@
             this.timerHours.Name = "timerHours";
             this.timerHours.Size = new System.Drawing.Size(41, 20);
             this.timerHours.TabIndex = 6;
-            this.timerHours.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // timerSeconds
             // 
@@ -85,7 +84,6 @@
             this.timerSeconds.Name = "timerSeconds";
             this.timerSeconds.Size = new System.Drawing.Size(41, 20);
             this.timerSeconds.TabIndex = 3;
-            this.timerSeconds.ValueChanged += new System.EventHandler(this.timerSeconds_ValueChanged);
             // 
             // panel1
             // 
@@ -117,7 +115,6 @@
             this.label3.Size = new System.Drawing.Size(44, 14);
             this.label3.TabIndex = 8;
             this.label3.Text = "Minutes";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -127,7 +124,6 @@
             this.label2.Size = new System.Drawing.Size(36, 14);
             this.label2.TabIndex = 7;
             this.label2.Text = "Hours";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // timerMinutes
             // 
@@ -170,7 +166,6 @@
             this.labelSeconds.Size = new System.Drawing.Size(26, 18);
             this.labelSeconds.TabIndex = 4;
             this.labelSeconds.Text = "00";
-            this.labelSeconds.Click += new System.EventHandler(this.labelSeconds_Click);
             // 
             // labelMinutes
             // 
@@ -181,7 +176,6 @@
             this.labelMinutes.Size = new System.Drawing.Size(26, 18);
             this.labelMinutes.TabIndex = 7;
             this.labelMinutes.Text = "00";
-            this.labelMinutes.Click += new System.EventHandler(this.label1_Click);
             // 
             // comboTask
             // 
@@ -190,12 +184,12 @@
             this.comboTask.Items.AddRange(new object[] {
             "Log Off",
             "Shutdown",
-            "Reboot"});
+            "Reboot",
+            "Alarm"});
             this.comboTask.Location = new System.Drawing.Point(71, 11);
             this.comboTask.Name = "comboTask";
             this.comboTask.Size = new System.Drawing.Size(115, 21);
             this.comboTask.TabIndex = 9;
-            this.comboTask.SelectedIndexChanged += new System.EventHandler(this.comboTask_SelectedIndexChanged);
             // 
             // checkBoxForced
             // 
@@ -216,7 +210,7 @@
             this.panel2.Size = new System.Drawing.Size(190, 50);
             this.panel2.TabIndex = 13;
             // 
-            // Form1
+            // Window_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -229,9 +223,8 @@
             this.Controls.Add(this.buttonStart);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Name = "Form1";
+            this.Name = "Window_Main";
             this.Text = "STimer";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.timerHours)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.timerSeconds)).EndInit();
             this.panel1.ResumeLayout(false);

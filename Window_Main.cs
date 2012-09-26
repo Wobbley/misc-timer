@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Management;
 
 namespace Timed_Shutdown
 {
@@ -16,7 +15,8 @@ namespace Timed_Shutdown
         public decimal minutes { get; set; }
         public decimal hours { get; set; }
         public Boolean paused { get; set; }
-        public int flag { get; set; }
+        public int selectedIndex { get; set; }
+        public Timed_Shutdown.Actions act = new Timed_Shutdown.Actions();
 
         public Window_Main()
         {
@@ -37,7 +37,6 @@ namespace Timed_Shutdown
                 timerHours.Enabled = false;
                 checkBoxForced.Enabled = false;
                 comboTask.Enabled = false;
-                //
 
                 seconds = timerSeconds.Value;
                 minutes = timerMinutes.Value;
@@ -48,21 +47,18 @@ namespace Timed_Shutdown
                 timer1.Enabled = true;
                 buttonStart.Visible = false;
                 buttonStop.Visible = true;
+
+                selectedIndex = comboTask.SelectedIndex;
                 if (checkBoxForced.Checked)
                 {
-                    flag = comboTask.SelectedIndex + 4;
+                    selectedIndex = selectedIndex + 4;
                 }
-                else
-                {
-                    flag = comboTask.SelectedIndex;
-                }
+                
             }
             else
             {
                 MessageBox.Show("You need to select an action!");
             }
-
-            //MessageBox.Show(flag.ToString());
         }
 
         private void buttonStop_Click(object sender, EventArgs e)
@@ -83,8 +79,6 @@ namespace Timed_Shutdown
 
             buttonStop.Visible = false;
             buttonStart.Visible = true;
-
-            
         }
     
 
@@ -92,9 +86,26 @@ namespace Timed_Shutdown
         {
             if (seconds == 0 && minutes == 0 && hours == 0)
             {
+                doTask(selectedIndex);
+
+
+                //Clean and update the interface.
                 timer1.Enabled = false;
-                ShutDownComputer(flag);
-                MessageBox.Show("Shutdown!");
+
+                seconds = 0;
+                minutes = 0;
+                hours = 0;
+
+                timerSeconds.Enabled = true;
+                timerMinutes.Enabled = true;
+                timerHours.Enabled = true;
+                checkBoxForced.Enabled = true;
+                comboTask.Enabled = true;
+
+                updateLabels();
+
+                buttonStop.Visible = false;
+                buttonStart.Visible = true;
             }
             else
             {
@@ -123,28 +134,7 @@ namespace Timed_Shutdown
             updateLabels();
         }
 
-        private void timerSeconds_ValueChanged(object sender, EventArgs e)
-        {
 
-        }
-
-
-        private void ShutDownComputer(int flag)
-        {
-            ManagementBaseObject mboShutdown = null;
-            ManagementClass mcWin32 = new ManagementClass("Win32_OperatingSystem");
-            mcWin32.Get();
-            // You can't shutdown without security privileges
-            mcWin32.Scope.Options.EnablePrivileges = true;
-            ManagementBaseObject mboShutdownParams = mcWin32.GetMethodParameters("Win32Shutdown");
-            // Flag 1 means we want to shut down the system
-            mboShutdownParams["Flags"] = flag;
-            mboShutdownParams["Reserved"] = "0";
-            foreach (ManagementObject manObj in mcWin32.GetInstances())
-            {
-                mboShutdown = manObj.InvokeMethod("Win32Shutdown", mboShutdownParams, null);
-            }
-        }
         private void updateLabels()
         {
             labelSeconds.Text = seconds.ToString();
@@ -152,49 +142,19 @@ namespace Timed_Shutdown
             labelHours.Text = hours.ToString();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelSeconds_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboTask_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+        private void doTask(int selectedIndex){
+            if (selectedIndex == 3)
+            {
+                act.Alarm();
+            }
+            else if (selectedIndex < 7)
+            {
+                act.ShutDownComputer(selectedIndex);
+            }
+            else
+            {
+                MessageBox.Show("Invalid Action!");
+            }
         }
     }
 }
