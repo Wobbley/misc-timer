@@ -68,5 +68,15 @@ namespace Timed_Shutdown.Properties {
                 return ResourceManager.GetStream("extreme_alarm", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon icon_timer {
+            get {
+                object obj = ResourceManager.GetObject("icon_timer", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
     }
 }

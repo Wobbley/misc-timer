@@ -10,7 +10,21 @@ namespace Timed_Shutdown
     public class Actions
     {
 
-        SoundPlayer sndplayer = new SoundPlayer(@"E:\workspace\misc-timer\misc-timer\Resources\Sounds\extreme_alarm.wav");
+        
+        private Uri uri1;
+        private Uri uri2;
+        private string relativePath;
+
+        private SoundPlayer sndplayer;
+
+        public Actions()
+        {
+            //[ab]using uri to create a relative path for the sound file
+            //uri1 = new Uri(@"C:\Users\Malin\workspace\misc-timer\Resources\Sounds\extreme_alarm.wav");
+            //uri2 = new Uri(@"C:\Users\Malin\workspace\misc-timer\");
+            //relativePath = uri2.MakeRelativeUri(uri1).ToString();
+            sndplayer = new SoundPlayer(@"C:\Users\Malin\workspace\misc-timer\Resources\Sounds\extreme_alarm.wav");
+        }
 
         public void ShutDownComputer(int flag)
         {

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Window_Main));
             this.buttonStart = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timerHours = new System.Windows.Forms.NumericUpDown();
@@ -223,8 +224,9 @@
             this.Controls.Add(this.buttonStart);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Window_Main";
-            this.Text = "STimer";
+            this.Text = "Misc. Timer";
             ((System.ComponentModel.ISupportInitialize)(this.timerHours)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.timerSeconds)).EndInit();
             this.panel1.ResumeLayout(false);
