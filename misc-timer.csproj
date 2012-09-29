@@ -53,7 +53,8 @@
     </StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\Icons\icon_timer.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <ItemGroup>
@@ -128,13 +129,7 @@
     <None Include="Resources\Sounds\extreme_alarm.wav" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Icons\icon_timer.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Icons\icon_timer.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Icon1.ico" />
+    <None Include="Resources\Icons\alarm_clock.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

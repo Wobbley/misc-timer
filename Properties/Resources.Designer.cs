@@ -61,21 +61,21 @@ namespace Timed_Shutdown.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon alarm_clock {
+            get {
+                object obj = ResourceManager.GetObject("alarm_clock", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream extreme_alarm {
             get {
                 return ResourceManager.GetStream("extreme_alarm", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        internal static System.Drawing.Icon icon_timer {
-            get {
-                object obj = ResourceManager.GetObject("icon_timer", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
             }
         }
     }

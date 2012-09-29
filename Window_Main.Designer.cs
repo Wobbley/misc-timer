@@ -226,6 +226,8 @@
             this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Window_Main";
+            this.RightToLeftLayout = true;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Misc. Timer";
             ((System.ComponentModel.ISupportInitialize)(this.timerHours)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.timerSeconds)).EndInit();
